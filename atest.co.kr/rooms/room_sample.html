@@ -1,0 +1,80 @@
+<section id="content" class="sub2_2 sub_room sub_room_detail">
+    <div class="sub_visual_wide visual">
+        <div class="main_txt_top">
+            <span>Room Information</span>
+            <strong>Preview</strong>
+            <p><?= $mh_room_names[$_GET['room_id']] ?></p>
+        </div>
+        <div class="arw_box">
+            <div class="arw_left" ><img src="<?= $common_spe_le_png ?>" alt="왼쪽"></div>
+            <div class="arw_right"><img src="<?= $common_spe_ri_png ?>" alt="오른쪽"></div>
+        </div>
+        <a href="#"class="scroll_down"><img src="<?= $common_scroll_down_png ?>" alt="스크롤"></a>
+        <div class="sub_visual_box">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <?php if (count($trip_room_images) > 0) { foreach ($trip_room_images as $room_image) { ?>
+                        <div class="swiper-slide" style="background:url(<?= $room_image->content_url ?>) center; background-size:cover;"></div>
+                    <?php }} ?>
+                </div>
+            </div>
+        </div>
+    </div><!--// sub_visual -->
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/room_list_lnb.html'; ?>
+    <div class="sub_cont">
+        <div class="sub_inner">
+            <div class="sub_title2">
+                <h3><?= $mh_room_names[$_GET['room_id']] ?></h3>
+                <p>객실 상세 정보를 안내해 드립니다.</p>
+            </div>
+            <div class="table_box">
+                <?php include "common/inc/price_table.html";?>
+            </div>
+            <div class="sub_inner">
+                <ul class="sub_img_box">
+                    <li class="img" style="background:url(<?= ${'room_' . $_GET['room_id'] . '_1_jpg'} ?>)no-repeat center;background-size:120% auto;"></li>
+                    <li class="img" style="background:url(<?= ${'room_' . $_GET['room_id'] . '_2_jpg'} ?>)no-repeat center center;background-size:cover;"></li>
+                </ul>
+				<div class="txt_box">
+					<strong><?= $pension_en2 ?></strong>
+					<p>Stay <?= $pension_en2 ?>, the space where you will be happier<br>I'll be waiting. See you soon, we</p>
+				</div>
+            </div>
+        </div>
+        <div class="room_parallax">
+            <div class="parallax-window" data-parallax="scroll" data-image-src="<?= ${'room_' . $_GET['room_id'] . '_5_jpg'} ?>" >
+                <div class="spe_in_txt">
+                    <div class="sub_inner">
+                        <div class="txt_box">
+                            <strong>Welcome to <?= $pension_en2 ?></strong>
+                            <p>
+                                Stays with sea views in all rooms have crispy duvets and cute props.
+                                <br>There is also a panoramic sea view and sunshine every morning.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sub_inner">
+            <ul class="sub_img_box sub_img_box_align">
+                <li class="img" style="background:url(<?= ${'room_' . $_GET['room_id'] . '_2_jpg'} ?>)no-repeat center;background-size:120% auto;"></li>
+                <li class="img" style="background:url(<?= ${'room_' . $_GET['room_id'] . '_4_jpg'} ?>)no-repeat center center;background-size:cover;"></li>
+            </ul>
+            <div class="sub_img_box_wide">
+                <div class="img" style="background:url(<?= ${'room_' . $_GET['room_id'] . '_10_jpg'} ?>)no-repeat center;background-size:120% auto;"></div>
+                <div class="txt_box">
+                    <strong>Hello, <?= $pension_en2 ?></strong>
+                    <p>Stay , the space where you will be happier <br>I'll be waiting. See you soon, we</p>
+                </div>
+            </div>
+        </div>
+        <?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/room_list.html'; ?>
+    </div><!--// sub_cont -->
+</section>
+
+
+
+
+
+

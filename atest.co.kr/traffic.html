@@ -1,0 +1,43 @@
+<?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/head.html'; ?>
+<div id="wrap">
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.html";?>
+	<div id="container">
+		<section id="content" class="sub6_1 sub_traffic">
+			<div class="sub_visual" style="background:url(<?= $traffic_top_jpg ?>)no-repeat center 78%;background-size:cover;">
+				<div class="txt_box">
+					<h3>LOCATION</h3>
+					<span><?= $mh_item_name ?> 오시는길</span>
+				</div>
+			</div><!--// sub_visual -->
+			<div class="sub_cate_wrap">
+				<div class="sub_inner">
+					<ul>
+						<li class="on"><a href="traffic.html">오시는길</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="sub_cont">
+				<div class="map"><?= $kakao ?></div>
+				<div class="map_info">
+					<strong>주소 : <?= $mh_loc_road_addr ?></strong>
+					<dl>
+						<dt>승용차 이용시</dt>
+						<dd>
+							※ 네비게이션에 아래 주소를 검색해주세요.<br>
+							지번 주소 : <?= $mh_loc_old_addr ?><br>
+							도로명 주소 : <?= $mh_loc_road_addr ?><br>
+						</dd>
+						<dt>대중교통 이용시</dt>
+						<dd><?= $bus ?></dd>
+					</dl>
+				</div>
+			</div><!--// sub_cont -->
+		</section>
+	</div>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/footer.html'; ?>
+</div>
+
+
+
+
+

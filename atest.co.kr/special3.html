@@ -1,0 +1,59 @@
+<?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/head.html'; ?>
+<div id="wrap">
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.html";?>
+	<div id="container">
+		<section id="content" class="sub3_1 sub_special">
+			<div class="sub_visual_wide visual">
+				<div class="main_txt_top">
+					<span>Special Information</span>
+					<strong>Lawn Garden</strong>
+					<p>잔디마당</p>
+				</div>
+				<div class="arw_box">
+					<div class="arw_left" ><img src="<?= $common_spe_le_png ?>" alt="왼쪽"></div>
+					<div class="arw_right"><img src="<?= $common_spe_ri_png ?>" alt="오른쪽"></div>
+				</div>
+				<a href="#"class="scroll_down"><img src="<?= $common_scroll_down_png ?>"alt="스크롤"></a>
+				<div class="sub_visual_box">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+                            <?php if (count($trip_special_images_3) > 0) { foreach ($trip_special_images_3 as $special_image) { ?>
+                                <div class="swiper-slide" style="background:url(<?= $special_image->content_url ?>) center; background-size:cover;"></div>
+                            <?php }} ?>
+						</div>
+					</div>
+				</div>
+			</div><!--// sub_visual -->
+			<div class="sub_cate_wrap">
+				<div class="sub_inner">
+                    <?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/special_lnb.html";?>
+				</div>
+			</div>
+			<div class="sub_cont">
+				<div class="sub_inner">
+					<div class="sub_title2">
+						<h3>Lawn Garden</h3>
+                        <p>잔디마당</p>
+					</div>
+					<p class="notice_txt">
+						푸르른 잔디마당에서 가벼운 산책을 즐기며<br>
+                        여유를 느껴보세요.
+					</p>
+					<ul class="sub_img_box sub_img_box_align">
+						<li class="img" style="background:url(<?= $special_3_1_jpg ?>)no-repeat center 50%; background-size:cover;"></li>
+						<li class="img" style="background:url(<?= $special_3_4_jpg ?>)no-repeat center center; background-size:cover;"></li>
+					</ul>
+					<div class="sub_img_box_wide">
+						<div class="img" style="background:url(<?= $special_3_2_jpg ?>)no-repeat center 50%; background-size:cover;"></div>
+					</div>
+				</div>
+			</div><!--// sub_cont -->
+		</section>
+	</div>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/footer.html'; ?>
+</div>
+
+
+
+
+

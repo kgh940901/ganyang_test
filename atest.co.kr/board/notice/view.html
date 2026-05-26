@@ -1,0 +1,101 @@
+<?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/head.html'; ?>
+<div id="wrap">
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.html";?>
+	<div id="container">
+		<section id="content" class="sub_board">
+			<div class="sub_visual" style="background:url(<?= $room_1_1_jpg ?>)no-repeat center 75%;background-size:cover;">
+				<div class="txt_box">
+					<h3>NOTICE</h3>
+					<span><?= $mh_item_name ?> 공지사항 입니다.</span>
+				</div>
+			</div><!--// sub_visual -->
+			<div class="sub_cate_wrap">
+				<div class="sub_inner">
+                    <ul>
+                        <li class="on"><a href="/board/notice/list.html">공지사항</a></li>
+						<li><a href="/board/qna/list.html">Q&A</a></li>
+                        <li><a href="/board/review/list.html">후기게시판</a></li>
+                    </ul>
+				</div>
+			</div>
+			<div class="sub_cont">
+                <article class="board_wrap board-view">
+                    <header>
+                        <h2><span class=""><?= $board_data->title ?></span></h2>
+                    </header>
+                    <section class="board-desc">
+                        <ul class="infos">
+                            <li class="writer">작성자: <?= $board_data->name ?></li>
+                            <li class="reg-date">작성일: <?= $board_data->reg_date ?></li>
+                            <li class="read-cnt">조회수: <?= number_format($board_data->read_cnt) ?></li>
+                        </ul>
+                        <!-- 본문 내용 시작 { -->
+                        <div class="desc"><?= nl2br($board_data->desc) ?></div>
+                        <!-- } 본문 내용 끝 -->
+                        <?php if (count($board_data->attach_files) > 0) { ?>
+                        <div class="attach-files">
+                            <ul>
+                                <?php if (count($board_data->attach_files) > 0) { foreach ($board_data->attach_files as $k => $v) { ?>
+                                <li><a href="<?= $mh_s3_url ?><?= $v->file_path ?>" target="_blank"><img src="<?= $mh_s3_url ?><?= $v->file_path ?>"/></a></li>
+                                <?php }} ?>
+                            </ul>
+                        </div>
+                        <?php } ?>
+                    </section>
+                    <!-- 게시물 상단 버튼 시작 { -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-modify" onclick="pop_passwd('modify', '<?= $_GET['id'] ?>', '/board/notice/write.html?page=<?= $_GET['page'] ?>&search_kind=<?= $_GET['search_kind'] ?>&search_word=<?= $_GET['search_word'] ?>')">수정</button>
+                        <button type="button" class="btn btn-delete" onclick="pop_passwd('delete', '<?= $_GET['id'] ?>', '/board/notice/list.html')">삭제</button>
+                        <button type="button" class="btn btn-list" onclick="location.href='/board/notice/list.html?page=<?= $_GET['page'] ?>&search_kind=<?= $_GET['search_kind'] ?>&search_word=<?= $_GET['search_word'] ?>'">목록</button>
+                    </div>
+                    <!-- } 게시물 상단 버튼 끝 -->
+                    <div class="comment-write">
+                        <form id="fwrite_comment" name="fwrite_comment" action="/board/notice/view.html" method="post" autocomplete="off">
+                            <input type="hidden" name="mode" value="comment_write"/>
+                            <input type="hidden" name="board_item_id" value="<?= $_GET['id'] ?>"/>
+                            <input type="hidden" name="board_comment_id" value=""/>
+                            <input type="hidden" name="redirect" value="/board/notice/view.html?id=<?= $_GET['id'] ?>&page=<?= $_GET['page'] ?>&search_kind=<?= $_GET['search_kind'] ?>&search_word=<?= $_GET['search_word'] ?>"/>
+                            <ul>
+                                <li>
+                                    <label for="mh_name">작성자</label>
+                                    <input type="text" id="mh_name" name="mh_name" value=""/>
+								</li>
+								<li>
+                                    <label for="mh_passwd">비밀번호</label>
+                                    <input type="password" id="mh_passwd" name="mh_passwd" value=""/>
+								</li>
+								<li>
+                                    <button type="button" class="btn btn-save">저장</button>
+                                </li>
+                            </ul>
+							<div class="mh_wrap"><textarea name="mh_desc"></textarea></div>
+                        </form>
+                    </div>
+                    <?php if (count($board_data->comment_list) > 0) { ?>
+                    <div class="comment-list">
+                        <ul>
+                            <?php if (count($board_data->comment_list) > 0) { foreach ($board_data->comment_list as $k => $v) { ?>
+                            <li class="comment-row">
+                                <div class="infos">
+                                    <p class="writer"><?= $v->name ?></p>
+                                    <p class="reg-date"><?= date('Y-m-d H:i:s', strtotime($v->reg_date)) ?></p>
+                                </div>
+                                <div class="desc"><?= nl2br($v->desc) ?></div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-remove" onclick="pop_passwd('comment_delete', '<?= $v->id ?>', '/board/notice/view.html?id=<?= $_GET['id'] ?>&page=<?= $_GET['page'] ?>&search_kind=<?= $_GET['search_kind'] ?>&search_word=<?= $_GET['search_word'] ?>')">삭제</button>
+                                </div>
+                            </li>
+                            <?php }} ?>
+                        </ul>
+                    </div>
+                    <?php } ?>
+                </article>
+			</div><!--// sub_cont -->
+		</section>
+	</div>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/footer.html'; ?>
+</div>
+
+
+
+

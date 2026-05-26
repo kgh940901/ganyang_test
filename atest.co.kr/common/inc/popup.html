@@ -1,0 +1,64 @@
+<?php if (count($popup_data) > 0) { ?>
+	<div class="popup_wrap modal">
+	<?php foreach ($popup_data as $k => $v) { ?>
+	<?php if (isset($_COOKIE['mh_layer_popup_close_date_'.$v->id]) === true && $_COOKIE['mh_layer_popup_close_date_'.$v->id] == 'Y') continue; ?>
+	<div class="mh_layer_popup" style="
+		<?php if ($v->top) { ?>top: <?= $v->top ?>px;<?php } ?>
+		<?php if ($v->left) { ?>left: <?= $v->left ?>px;<?php } ?>
+		z-index: 9999<?= $k ?>;
+		<?php if ($v->width) { ?>width: <?= $v->width ?>px;<?php } ?>">
+		<!--<?php if ($v->height) { ?>height: calc(<?= $v->height ?>px + 55px);<?php } ?>-->
+		<div class="mh_layer_popup_head"></div>
+		<div class="mh_layer_popup_desc modal-content">
+			<?= $v->desc ?>
+		</div>
+		<div class="mh_layer_popup_foot">
+			<dl>
+				<dt>
+					<p>
+						<input type="checkbox" id="mh_layer_popup_close_date<?= $v->id ?>" name="mh_layer_popup_close_date" value="<?= $v->id ?>" data-date="<?= $v->cookie_date ?>"/>
+						<label for="mh_layer_popup_close_date<?= $v->id ?>"><?= number_format($v->cookie_date) ?>일간 보지않기</label>
+					</p>
+				</dt>
+				<dd>
+					<button type="button" class="mh_layer_popup_close">닫기</button>
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<?php } ?>
+<script>
+$(function () {
+	$('.mh_layer_popup_close').on('click', function () {
+		let $check = $(this).closest('.mh_layer_popup_foot').find('[name=mh_layer_popup_close_date]');
+		if ($check.is(':checked') === true) {
+			$.cookie('mh_layer_popup_close_date_' + $check.val(), 'Y', {expires: $check.data('date')});
+		}
+		$(this).closest('.mh_layer_popup').hide();
+		if ($('.mh_layer_popup:visible').length == 0) {
+			$('.popup_bg, .popup_wrap').hide();
+		}
+	});
+    if ($('.mh_layer_popup:visible').length == 0) {
+        $('.popup_bg, .popup_wrap').hide();
+    }
+	$('.popup_bg').on('click', function() {
+		$('.popup_wrap').hide(); 
+	});
+});
+</script>
+<div class="popup_bg"></div>
+</div>
+<?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+

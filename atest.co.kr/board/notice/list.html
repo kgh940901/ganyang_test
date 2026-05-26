@@ -1,0 +1,93 @@
+<?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/head.html'; ?>
+<div id="wrap">
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.html";?>
+	<div id="container">
+		<section id="content" class="sub_board">
+			<div class="sub_visual" style="background:url(<?= $room_1_1_jpg ?>)no-repeat center 75%;background-size:cover;">
+				<div class="txt_box">
+					<h3>NOTICE</h3>
+					<span><?= $mh_item_name ?> 공지사항 입니다.</span>
+				</div>
+			</div><!--// sub_visual -->
+			<div class="sub_cate_wrap">
+				<div class="sub_inner">
+                    <ul>
+                        <li class="on"><a href="/board/notice/list.html">공지사항</a></li>
+						<li><a href="/board/qna/list.html">Q&A</a></li>
+                        <li><a href="/board/review/list.html">후기게시판</a></li>
+                    </ul>
+				</div>
+			</div>
+			<div class="sub_cont">
+                <div class="board_wrap board-list">
+                    <fieldset>
+                        <form name="fsearch" method="get">
+                            <select name="search_kind" class="search-select">
+                                <option value="title" <?= ($_GET['search_kind'] == 'title' ? 'selected' : '') ?>>제목</option>
+                                <option value="desc" <?= ($_GET['search_kind'] == 'desc' ? 'selected' : '') ?>>내용</option>
+                                <option value="name" <?= ($_GET['search_kind'] == 'name' ? 'selected' : '') ?>>글쓴이</option>
+                            </select>
+                            <input type="text" name="search_word" value="<?= $_GET['search_word'] ?>" required class="search-input" placeholder="검색어를 입력해주세요"/>
+                            <button type="submit" value="검색" class="btn-search"><span class="">검색</span></button>
+                        </form>
+                    </fieldset>
+                    <table class="tbl-board-list">
+                        <caption>공지사항 목록</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">번호</th>
+                                <th scope="col">제목</th>
+                                <th scope="col">글쓴이</th>
+                                <th scope="col">조회</th>
+                                <th scope="col">날짜</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (count($board_data->list) > 0) { foreach ($board_data->list as $k => $v) { ?>
+                            <tr>
+                                <td class="td_num"><?= $v->no ?></td>
+                                <td class="td_subject">
+                                    <a href="/board/notice/view.html?id=<?= $v->id ?>&page=<?= $_GET['page'] ?>&search_kind=<?= $_GET['search_kind'] ?>&search_word=<?= $_GET['search_word'] ?>"><?= $v->title ?></a>
+                                </td>
+                                <td class="td_name"><?= $v->name ?></td>
+                                <td class="td_read"><?= number_format($v->read) ?></td>
+                                <td class="td_datetime"><?= date('Y-m-d', strtotime($v->reg_date)) ?></td>
+                            </tr>
+                            <?php }} else { ?>
+                            <tr>
+                                <td colspan="5" class="td_no_data">검색된 데이터가 없습니다.</td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                    <div class="pagination">
+                        <ul>
+                            <?php if ($board_data->pagination->prev) { ?>
+                            <li><a href="?page=1&search_kind=<?= $_GET['search_kind'] ?>&search_word=<?= $_GET['search_word'] ?>">&lt;&lt;</a></li>
+                            <li><a href="?page=<?= $board_data->pagination->prevNo ?>&search_kind=<?= $_GET['search_kind'] ?>&search_word=<?= $_GET['search_word'] ?>">&lt;</a></li>
+                            <?php } ?>
+                            <?php if (count($board_data->pagination->pages) > 0) { foreach ($board_data->pagination->pages as $k => $v) { ?>
+                            <li class="<?= $v == $board_data->pagination->page ? 'on' : '' ?>"><a href="?page=<?= $v ?>&search_kind=<?= $_GET['search_kind'] ?>&search_word=<?= $_GET['search_word'] ?>"><?= $v ?></a></li>
+                            <?php }} ?>
+                            <?php if ($board_data->pagination->next) { ?>
+                            <li><a href="?page=<?= $board_data->pagination->nextNo ?>&search_kind=<?= $_GET['search_kind'] ?>&search_word=<?= $_GET['search_word'] ?>">&gt;</a></li>
+                            <li><a href="?page=<?= $board_data->pagination->total ?>&search_kind=<?= $_GET['search_kind'] ?>&search_word=<?= $_GET['search_word'] ?>">&gt;&gt;</a></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                    <div class="btn-row">
+                        <a href="/board/notice/write.html"><button type="button" class="btn btn-write">글쓰기</button></a>
+                    </div>
+                </div>
+			</div><!--// sub_cont -->
+		</section>
+	</div>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/footer.html'; ?>
+</div>
+
+
+
+
+
+
+

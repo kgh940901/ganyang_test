@@ -1,0 +1,56 @@
+<?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/head.html'; ?>
+<div id="wrap">
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.html";?>
+	<div id="container">
+		<section id="content" class="sub4_1 sub_reserve">
+			<div class="sub_visual" style="background:url(<?= $room_28437_1_jpg ?>)no-repeat center 50%;background-size:cover;">
+				<div class="txt_box">
+					<h3>RESERVE</h3>
+					<span><?= $mh_item_name ?> 예약하기</span>
+				</div>
+			</div><!--// sub_visual -->
+			<div class="sub_cate_wrap">
+				<div class="sub_inner">
+					<ul>
+						<li class="on"><a href="reservation.html">예약안내</a></li>
+						<li><a href="<?= $mh_reservation_url ?>" target="_blank">실시간예약</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="sub_cont sub_inner">
+				<div class="sub_title2">
+					<h3>Reservation</h3>
+					<p>예약시 참고하실 사항을 안내해 드립니다.</p>
+				</div>
+				<div class="room_wrap">
+                    <?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/price_table.html'; ?>
+				</div>
+				<div class="reserve_info">
+					<div class="sub_title3">
+						<h3>Information</h3>
+					</div>
+					<dl>
+						<dt>펜션정보</dt>
+						<dd><?= $mh_reservation_info ?></dd>
+					</dl>
+				</div>
+				<div class="reserve_info">
+					<div class="sub_title3">
+						<h3>Refund Info</h3>
+					</div>
+					<dl>
+						<dt>환불정보</dt>
+						<dd><?= $mh_refund_info ?></dd>
+					</dl>
+				</div>
+			</div><!--// sub_cont -->
+		</section>
+	</div>
+	<?php include "common/inc/footer.html";?>
+</div>
+
+
+
+
+
+

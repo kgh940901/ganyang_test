@@ -1,0 +1,76 @@
+<?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/head.html'; ?>
+<div id="wrap">
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.html";?>
+	<div id="container">
+		<section id="content" class="sub_board">
+			<div class="sub_visual" style="background:url(<?= $room_3_1_jpg ?>)no-repeat center 75%;background-size:cover;">
+				<div class="txt_box">
+					<h3>REVIEW</h3>
+					<span><?= $mh_item_name ?> 질문 게시판 입니다.</span>
+				</div>
+			</div><!--// sub_visual -->
+			<div class="sub_cate_wrap">
+				<div class="sub_inner">
+                    <ul>
+                        <li><a href="/board/notice/list.html">공지사항</a></li>
+						<li><a href="/board/qna/list.html">Q&A</a></li>
+                        <li class="on"><a href="/board/review/list.html">후기게시판</a></li>
+                    </ul>
+				</div>
+			</div>
+			<div class="sub_cont board_wrap">
+                <form id="fwrite" name="fwrite" action="/board/review/write.html" method="post" enctype="multipart/form-data" autocomplete="off">
+                    <input type="hidden" name="id" value="<?= $board_data->id ?>"/>
+                    <input type="hidden" name="redirect" value="/board/review/list.html"/>
+                    <div class="board-write">
+                        <div class="board-write-row">
+                            <label for="mh_name" class="form-label">이름</label>
+                            <input type="text" id="mh_name" name="mh_name" value="<?= $board_data->name ?>" required class="form-input" maxlength="150" placeholder="작성자 이름일 입력해주세요." oninvalid="alert(this.placeholder)"/>
+                        </div>
+                        <div class="board-write-row">
+                            <label for="mh_passwd" class="form-label">비밀번호</label>
+                            <input type="password" id="mh_passwd" name="mh_passwd" value="" required class="form-input" placeholder="게시글 수정을 위한 비밀번호를 입력해주세요." oninvalid="alert(this.placeholder)"/>
+                        </div>
+                        <div class="board-write-row">
+                            <label for="mh_title" class="form-label">제목</label>
+                            <input type="text" id="mh_title" name="mh_title" value="<?= $board_data->title ?>" required class="form-input" maxlength="150" placeholder="게시글의 제목을 입력해주세요." oninvalid="alert(this.placeholder)"/>
+                        </div>
+                        <div class="board-write-row">
+                            <label for="mh_desc" class="form-label">내용</label>
+                            <textarea name="mh_desc" rows="10" required placeholder="게시글의 내용을 입력해주세요." oninvalid="alert(this.placeholder)"><?= $board_data->desc ?></textarea>
+                        </div>
+                        <?php if (isset($board_data) === true && count($board_data->attach_files) > 0) { foreach ($board_data->attach_files as $k => $v) { ?>
+                        <div class="board-write-row">
+                            <span><a href="<?= $mh_s3_url ?>/<?= $v->file_path ?>" target="_blank"><?= $v->file_name ?></a></span>
+                            <label><input type="checkbox" name="mh_file_delete[]" value="<?= $v->id ?>"/> 삭제</label>
+                        </div>
+                        <?php }} ?>
+                        <?php for ($i = 0; $i < (isset($board_data) === true ? 5 - count($board_data->attach_files) : 5); $i++) { ?>
+                        <div class="board-write-row">
+                            <label for="mh_file_<?= $i + 1 ?>" class="form-label"><span class="">파일 #<?= $i + 1 ?></span></label>
+                            <input type="file" name="mh_file[]" id="mh_file_<?= $i + 1 ?>" title="파일첨부 <?= $i + 1 ?>" class=""/>
+                        </div>
+                        <?php } ?>
+                        <div class="board-write-row btn-row">
+                            <button type="button" class="btn btn-cancel" onclick="history.back()">취소</button>
+                            <button type="submit" class="btn btn-submit">작성완료</button>
+                        </div>
+                    </div>
+                </form>
+			</div><!--// sub_cont -->
+		</section>
+	</div>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/footer.html'; ?>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

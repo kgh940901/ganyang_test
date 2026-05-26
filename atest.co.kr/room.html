@@ -1,0 +1,15 @@
+<?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/head.html'; ?>
+<div id="wrap">
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/header.html'; ?>
+    <div id="container">
+        <?php if (isset($_GET['room_id']) === true) { ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'].'/rooms/' . $_GET['room_id'] . '.html'; ?>
+        <?php } else { ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'].'/rooms/preview.html'; ?>
+        <?php } ?>
+    </div>
+	<?php include "common/inc/footer.html";?>
+</div>
+
+
+

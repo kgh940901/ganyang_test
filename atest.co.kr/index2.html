@@ -1,0 +1,111 @@
+<?php include "common/inc/head.html";?>
+<div id="wrap">
+    <?php include "common/inc/header.html";?>
+    <div id="container">
+        <section id="content" class="main">
+            <div class="main_visual visual">
+                <div class="main_txt_top">
+                    <span>WELCOME TO PENSION</span>
+                    <strong>Rothem House</strong>
+                    <p>그림같은 자연 속에서 즐기는 편안한 휴식, <?= $pension_ko ?></p>
+                </div>
+                <div class="arw_box">
+                    <div class="arw_left"></div>
+                    <div class="arw_right"></div>
+                </div>
+                <a href="#"class="scroll_down"><img src="<?= $common_scroll_down_png ?>"alt="스크롤"></a>
+                <div class="main_visual_box">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"style="background:url(http://image.trip11.co.kr/rothemhouseps.kr/assets/images/main/12.jpg) center;background-size:cover;"></div>
+                            <div class="swiper-slide"style="background:url(http://image.trip11.co.kr/rothemhouseps.kr/assets/images/main/2.jpg) center 65%;background-size:cover;"></div>
+                            <div class="swiper-slide"style="background:url(http://image.trip11.co.kr/rothemhouseps.kr/assets/images/main/3.jpg) center;background-size:cover;"></div>
+                            <div class="swiper-slide"style="background:url(http://image.trip11.co.kr/rothemhouseps.kr/assets/images/main/4.jpg) center 60%;background-size:cover;"></div>
+                            <div class="swiper-slide"style="background:url(http://image.trip11.co.kr/rothemhouseps.kr/assets/images/main/5.jpg) center 80%;background-size:cover;"></div>
+                            <div class="swiper-slide"style="background:url(http://image.trip11.co.kr/rothemhouseps.kr/assets/images/main/6.jpg) center 65%;background-size:cover;"></div>
+                            <div class="swiper-slide"style="background:url(http://image.trip11.co.kr/rothemhouseps.kr/assets/images/main/7.jpg) center 80%;background-size:cover;"></div>
+                            <div class="swiper-slide"style="background:url(http://image.trip11.co.kr/rothemhouseps.kr/assets/images/main/8.jpg) center;background-size:cover;"></div>
+                            <div class="swiper-slide"style="background:url(http://image.trip11.co.kr/rothemhouseps.kr/assets/images/main/9.jpg) center 60%;background-size:cover;"></div>
+                            <div class="swiper-slide"style="background:url(http://image.trip11.co.kr/rothemhouseps.kr/assets/images/main/10.jpg) center 60%;background-size:cover;"></div>
+                            <div class="swiper-slide"style="background:url(http://image.trip11.co.kr/rothemhouseps.kr/assets/images/main/11.jpg) center 80%;background-size:cover;"></div>
+                            <div class="swiper-slide"style="background:url(http://image.trip11.co.kr/rothemhouseps.kr/assets/images/main/1.jpg) center;background-size:cover;"></div>
+                            <div class="swiper-slide"style="background:url(http://image.trip11.co.kr/rothemhouseps.kr/assets/images/main/13.jpg) center;background-size:cover;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--// main_visual -->
+            <?php include "common/inc/room_list.html"; ?>
+            <div class="main_spe">
+                <div class="main_title">
+                    <h3>Special Point</h3>
+                    <p>로뎀하우스 펜션의 특장점을 확인해보세요.</p>
+                </div>
+                <div class="spe_list">
+                    <div class="parallax-window"data-parallax="scroll"data-image-src="http://image.trip11.co.kr/rothemhouseps.kr/assets/images/special/1/1.jpg">
+                        <a class="spe_in_txt" href="./special1.html">
+                            <div class="txt_box">
+                                <strong>Swimming Pool</strong>
+                                <p>야외 수영장</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="parallax-window"data-parallax="scroll"data-image-src="http://image.trip11.co.kr/rothemhouseps.kr/assets/images/special/2/1.jpg">
+                        <a class="spe_in_txt" href="#">
+                            <div class="txt_box">
+                                <strong>BBQ Party</strong>
+                                <p>바베큐 파티</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="parallax-window"data-parallax="scroll"data-image-src="http://image.trip11.co.kr/rothemhouseps.kr/assets/images/special/1/1.jpg">
+                        <a class="spe_in_txt" href="#">
+                            <div class="txt_box">
+                                <strong>Interior</strong>
+                                <p>인테리어</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="parallax-window"data-parallax="scroll"data-image-src="http://image.trip11.co.kr/rothemhouseps.kr/assets/images/special/2/1.jpg">
+                        <a class="spe_in_txt" href="#">
+                            <div class="txt_box">
+                                <strong>Lawn Yard</strong>
+                                <p>잔디 마당</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>                  
+            </div><!--// main_spe -->
+            <div class="main_landscape inner"> 
+                <div class="main_title">
+                    <h3>Healing Place</h3>
+                    <p>로뎀하우스 펜션에서 기분 좋은 휴식을 선물해드립니다.</p>
+                </div>
+                <?php include "common/inc/room_list_img.html"; ?> 
+            </div><!--// main_landscape -->
+            <?php if ($mh_instagram_calendar_use === true) { ?>
+                <?php include "common/inc/instagram.html"; ?>
+            <?php } ?>
+            <div class="main_pic">
+                <div class="pic_box">
+                    <div class="pic_list">
+                        <div class="img01"style="background:url('http://imagetemplete.trip11.co.kr/a_new/assets/images/view/4.jpg');background-size:cover;"></div>
+                        <div class="img02"style="background:url('http://imagetemplete.trip11.co.kr/a_new/assets/images/room/2/14.jpg');background-size:cover;"></div>
+                        <div class="img03"style="background:url('http://imagetemplete.trip11.co.kr/a_new/assets/images/room/7/5.jpg');background-size:cover;"></div>
+                    </div>
+                </div>
+                <div class="txt_box">
+                    <h3 class="pic_title">Rothem House</h3>
+                    <div class="inner">
+                        <strong>Welcome to Rothem House</strong>
+                        <p>Stays with sea views in all rooms have crispy duvets and cute props.<br>There is also a panoramic sea view and sunshine every morning.</p>
+                    </div>
+                </div><!--// main_pic -->
+            </div>
+        </section>
+    </div>
+    <?php include "common/inc/footer.html";?>
+</div>
+
+
+
+

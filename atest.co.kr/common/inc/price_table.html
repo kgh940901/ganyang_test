@@ -1,0 +1,105 @@
+<div class="table_box">
+    <div class="price_table for_pc">
+        <table cellspacing="0" cellpadding="0" class="table_default">
+            <thead>
+                <tr>
+                    <th scope="col" rowspan="2">객실명</th>
+                    <th scope="col" rowspan="2" width="10">평형</th>
+                    <th class="type" scope="col" rowspan="2">유형</th>
+                    <th scope="col" colspan="2">인원</th>
+                    <?php if (count($trip_price_list) >
+                    0 && count($trip_price_list[0]->season) > 0) { foreach ($trip_price_list[0]->season as $season) { ?>
+                    <th scope="col" colspan="3"><?= $season->name ?></th>
+                    <?php }} ?>
+                </tr>
+                <tr>
+                    <th scope="col" width="32">기준</th>
+                    <th scope="col" width="30">최대</th>
+                    <?php if (count($trip_price_list) >
+                    0 && count($trip_price_list[0]->season) > 0) { foreach ($trip_price_list[0]->season as $season) { ?>
+                    <th scope="col" width="60">주중</th>
+                    <th width="60">금요일</th>
+                    <th scope="col" width="60">주말</th>
+                    <?php }} ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (count($trip_price_list) > 0) { foreach ($trip_price_list as $price) { ?>
+                <tr>
+                    <td scope="row"><?= $price->name ?></td>
+                    <td><?= $price->size ?>평</td>
+                    <td><?= $price->structure ?></td>
+                    <td><?= $price->basic_person ?></td>
+                    <td><?= $price->limit_person ?></td>
+                    <?php if (count($price->season) > 0) { foreach ($price->season as $season) { ?>
+                    <td><?= number_format($season->nor_price) ?></td>
+                    <td><?= number_format($season->fri_price) ?></td>
+                    <td><?= number_format($season->sat_price) ?></td>
+                    <?php }} ?>
+                </tr>
+                <?php }} ?>
+            </tbody>
+        </table>
+        <?php if (count($trip_price_list) > 0 && isset($trip_price_list[0]->facility) === true) { ?>
+        <ul class="table_text">
+            <li>
+                <strong>집기품목</strong> :
+                <?= $trip_price_list[0]->facility ?>
+            </li>
+        </ul>
+        <?php } ?>
+    </div>
+    <div class="price_table for_m">
+        <table cellspacing="0" cellpadding="0" class="table_default">
+            <thead>
+                <tr>
+                    <th colspan="2">객실명</th>
+                    <th>기간</th>
+                    <th>주중</th>
+                    <th>금요일</th>
+                    <th>주말</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (count($trip_price_list) > 0) { foreach ($trip_price_list as $price) { ?>
+                <?php if (count($price->season) > 0) { foreach ($price->season as $key => $season) { ?>
+                <tr>
+                    <?php if ($key == 0) { ?>
+                    <td rowspan="<?= count($price->season) ?>" colspan="2">
+                        <span><?= $price->name ?></span>
+                    </td>
+                    <?php } ?>
+                    <td><?= $season->name ?></td>
+                    <td><?= number_format($season->nor_price) ?></td>
+                    <td><?= number_format($season->fri_price) ?></td>
+                    <td><?= number_format($season->sat_price) ?></td>
+                </tr>
+                <?php }} ?>
+                <tr>
+                    <td class="bg">기준인원</td>
+                    <td class="bg">최대인원</td>
+                    <td colspan="4">유형</td>
+                </tr>
+                <tr>
+                    <td><?= $price->basic_person ?></td>
+                    <td><?= $price->limit_person ?></td>
+                    <td colspan="4"><?= $price->structure ?></td>
+                </tr>
+                <?php }} ?>
+            </tbody>
+        </table>
+        <ul class="table_text">
+            <li>공휴일전날, 연휴요금은 실시간예약창을 확인해주세요.</li>
+            <?php if (count($trip_price_list) > 0 && isset($trip_price_list[0]->facility) === true) { ?>
+            <li>
+                <strong>집기품목</strong> :
+                <?= $trip_price_list[0]->facility ?>
+            </li>
+        </ul>
+        <?php } ?>
+    </div>
+    <div class="btn_wrap"><a href="<?= $mh_reservation_url ?>" target="_blank" class="btn_reserve">실시간 예약</a></div>
+</div>
+
+
+

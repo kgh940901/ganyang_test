@@ -1,0 +1,10 @@
+<div class="sub_cate_wrap">
+    <div class="sub_inner">
+        <ul>
+			<li><a href="room.html">미리보기</a></li>
+            <?php if (count($trip_room_list) > 0) { foreach ($trip_room_list as $room) { ?>
+			<li class="<?= $room->id == $_GET['room_id'] ? 'on' : '' ?>"><a href="/room.html?room_id=<?= $room->id ?>"><?= $room->title ?></a></li>
+			<?php }} ?>
+		</ul>
+    </div>
+</div>

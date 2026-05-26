@@ -1,0 +1,35 @@
+<div class="main_room">
+	<div class="arw_box">
+		<div class="arw_left"><img src="<?= $common_spe_le_png ?>"alt="왼쪽버튼"/></div>
+		<div class="arw_right"><img src="<?= $common_spe_ri_png ?>"alt="오른쪽버튼"></div>
+	</div>
+	<div class="room_list">
+		<div class="main_title">
+			<h3>Room's Preview</h3>
+			<p><?= $mh_item_name ?>의 객실을 소개합니다.</p>
+		</div>
+		<div class="swiper-container_special">
+			<div class="swiper-wrapper">
+                <?php if (count($trip_room_list) > 0) { foreach ($trip_room_list as $room) { ?>
+				<div class="swiper-slide">
+					<a class="spe_list" href="room.html?room_id=<?= $room->id ?>">
+						<div class="img" style="background:url(<?= ${'room_' . $room->id . '_1_jpg'} ?>)no-repeat center center; background-size:cover;"></div>
+						<div class="img_over"><img src="<?= $common_more_png ?>" /></div>
+						<div class="txt_box">
+							<div class="t01">Detail Room</div>
+							<div class="t02"><?= $room->title ?></div>
+							<div class="t03"><?= $room->room_structure ?></div>
+							<div class="t04">Read More</div>
+						</div>
+					</a>
+				</div>
+                <?php }} ?>
+			</div>
+		</div>
+	</div>
+</div><!--// main_room -->
+
+
+
+
+

@@ -1,0 +1,77 @@
+<?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/head.html'; ?>
+<div id="wrap">
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.html";?>
+	<div id="container">
+		<section id="content" class="sub3_1 sub_special">
+			<div class="sub_visual_wide visual">
+				<div class="main_txt_top">
+					<span>Special Information</span>
+					<strong>Private BBQ</strong>
+					<p>개별바베큐</p>
+				</div>
+				<div class="arw_box">
+					<div class="arw_left" ><img src="<?= $common_spe_le_png ?>" alt="왼쪽"></div>
+					<div class="arw_right"><img src="<?= $common_spe_ri_png ?>" alt="오른쪽"></div>
+				</div>
+				<a href="#"class="scroll_down"><img src="<?= $common_scroll_down_png ?>"alt="스크롤"></a>
+				<div class="sub_visual_box">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+                            <?php if (count($trip_special_images_2) > 0) { foreach ($trip_special_images_2 as $special_image) { ?>
+                                <div class="swiper-slide" style="background:url(<?= $special_image->content_url ?>) center; background-size:cover;"></div>
+                            <?php }} ?>
+						</div>
+					</div>
+				</div>
+			</div><!--// sub_visual -->
+			<div class="sub_cate_wrap">
+				<div class="sub_inner">
+                    <?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/special_lnb.html";?>
+				</div>
+			</div>
+			<div class="sub_cont">
+				<div class="sub_inner">
+					<div class="sub_title2">
+						<h3>Private BBQ</h3>
+                        <p>개별바베큐</p>
+					</div>
+					<p class="notice_txt">
+						더욱 프라이빗하게 즐기실 수 있는<br>
+                        개별바베큐장이 준비되어 있습니다. <br><br>
+
+                        이용 종류: 숯불 바베큐<br>
+                        준비 시간: 이용 30분전 신청필요<br>
+                        이용 시간: 오후 6시 ~ 밤 10시까지<br>
+                        이용 구성: 숯+그릴+집게+가위<br>
+                        이용 가격: 4인기준 30,000원 (1인 추가시, 5천원)<br><br>
+                        
+                        ※ 숯/그릴 개인지참 불가<br>
+                        ※ 우천 및 동계시에도 이용가능<br>
+                        ※ 바베큐 기본양념 개인지참 필요
+					</p>
+					<ul class="sub_img_box sub_img_box_align">
+						<li class="img" style="background:url(<?= $special_2_1_jpg ?>)no-repeat center 50%; background-size:cover;"></li>
+						<li class="img" style="background:url(<?= $special_2_5_jpg ?>)no-repeat center center; background-size:cover;"></li>
+					</ul>
+					<div class="sub_img_box_wide">
+						<div class="img" style="background:url(<?= $special_2_3_jpg ?>)no-repeat center 50%; background-size:cover;"></div>
+					</div>
+				</div>
+			</div><!--// sub_cont -->
+		</section>
+	</div>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/common/inc/footer.html'; ?>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

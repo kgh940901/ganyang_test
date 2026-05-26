@@ -1,0 +1,33 @@
+<section id="content" class="sub2_1 sub_room">
+    <div class="sub_visual" style="background:url(<?= $room_28438_2_jpg ?>)no-repeat center 75%;background-size:cover;">
+        <div class="txt_box">
+            <h3>ROOMS</h3>
+            <span><?= $mh_item_name ?>, 객실 미리보기</span>
+        </div>
+    </div><!--// sub_visual -->
+    <div class="sub_cate_wrap">
+        <div class="sub_inner">
+        <ul>
+            <li class="on"><a href="room.html">미리보기</a></li>
+            <?php if (count($trip_room_list) > 0) { foreach ($trip_room_list as $room) { ?>
+            <li class="<?= $room->id == $_GET['room_id'] ? 'on' : '' ?>"><a href="/room.html?room_id=<?= $room->id ?>"><?= $room->title ?></a></li>
+            <?php }} ?>
+        </ul>            
+        </div>
+    </div>
+    <div class="sub_cont">
+        <?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/room_list.html"; ?>
+        <div class="layout_box">
+            <div class="sub_title sub_inner">
+                <h3>Room's Layout</h3>
+                <p><?= $mh_item_name ?> 배치도 안내입니다.</p>
+            </div>
+            <div class="layout_img">
+                <img src="<?= $room_layout_jpg ?>" alt="">
+            </div>
+        </div>
+    </div><!--// sub_cont -->
+</section>
+
+
+
